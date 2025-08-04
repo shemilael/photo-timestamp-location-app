@@ -19,7 +19,7 @@ photo-timestamp-location-app
 
 1. **Klon repositori**:
    ```
-   git clone <repository-url>
+   git clone https://github.com/shemilael/photo-timestamp-location-app
    ```
 
 2. **Masuk ke direktori proyek**:
@@ -49,4 +49,4 @@ Kontribusi sangat diterima! Silakan ajukan pull request atau buka issue untuk sa
 
 ## Lisensi
 
-Proyek ini menggunakan lisensi MIT. Lihat file LICENSE
+Proyek ini menggunakan lisensi MIT. Lihat file [LICENSE](https://github.com/shemilael/photo-timestamp-location-app/blob/main/LICENSE)
