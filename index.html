@@ -8,14 +8,15 @@
   <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>Tambah Timestamp & Lokasi ke Foto</h1>
-    <input type="file" id="upload" accept="image/*" class="upload-input"><br>
-    <canvas id="canvas" class="hidden"></canvas>
-    <img id="result" alt="Hasil Foto dengan Timestamp dan Lokasi" class="result-image">
-    <br>
-    <a id="downloadBtn" download="foto_dengan_timestamp_lokasi.jpg" class="download-btn hidden">⬇️ Download Hasil</a>
-  </div>
+<div class="container">
+  <h1>Tambah Timestamp & Lokasi ke Foto</h1>
+  <input type="file" id="upload" accept="image/*" class="upload-input"><br>
+  <div id="info" class="info"></div> <!-- Tambahkan ini -->
+  <canvas id="canvas" class="hidden"></canvas>
+  <img id="result" alt="Hasil Foto dengan Timestamp dan Lokasi" class="result-image">
+  <br>
+  <a id="downloadBtn" download="foto_dengan_timestamp_lokasi.jpg" class="download-btn hidden">⬇️ Download Hasil</a>
+</div>
 
   <script src="scripts/app.js"></script>
   <footer class="footer">

@@ -2,6 +2,7 @@ const upload = document.getElementById('upload');
 const canvas = document.getElementById('canvas');
 const result = document.getElementById('result');
 const downloadBtn = document.getElementById('downloadBtn');
+const info = document.getElementById('info');
 
 function toDecimal(coord, ref) {
   const degrees = coord[0].numerator / coord[0].denominator;
@@ -40,15 +41,40 @@ upload.addEventListener('change', async function () {
           locationText = await getLocation(latitude, longitude);
         }
 
+        let latitudeText = "Latitude: tidak tersedia";
+        let longitudeText = "Longitude: tidak tersedia";
+        if (lat && lon && latRef && lonRef) {
+          const latitude = toDecimal(lat, latRef);
+          const longitude = toDecimal(lon, lonRef);
+          latitudeText = `Latitude: ${latitude.toFixed(6)}`;
+          longitudeText = `Longitude: ${longitude.toFixed(6)}`;
+        }
+        info.innerHTML = `
+          <strong>Timestamp:</strong> ${date}<br>
+          <strong>${latitudeText}</strong><br>
+          <strong>${longitudeText}</strong>
+        `;
+
         canvas.width = img.width;
         canvas.height = img.height;
         const ctx = canvas.getContext("2d");
         ctx.drawImage(img, 0, 0);
         ctx.font = "28px Arial";
         ctx.fillStyle = "yellow";
+
+        // Cetak Latitude & Longitude di foto
+        let latlonText = "Latitude: tidak tersedia, Longitude: tidak tersedia";
+        if (lat && lon && latRef && lonRef) {
+          const latitude = toDecimal(lat, latRef);
+          const longitude = toDecimal(lon, lonRef);
+          latlonText = `Lat: ${latitude.toFixed(6)}, Lon: ${longitude.toFixed(6)}`;
+          ctx.fillText(latlonText, 20, img.height - 90);
+        }
+
+        // Cetak waktu dan lokasi seperti sebelumnya
         ctx.fillText(date, 20, img.height - 60);
         ctx.fillText(locationText, 20, img.height - 30);
-
+        
         const dataURL = canvas.toDataURL("image/jpeg");
         result.src = dataURL;
         downloadBtn.href = dataURL;
