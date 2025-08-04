@@ -49,4 +49,4 @@ Kontribusi sangat diterima! Silakan ajukan pull request atau buka issue untuk sa
 
 ## Lisensi
 
-Proyek ini menggunakan lisensi MIT. Lihat file LICENSE
+Proyek ini menggunakan lisensi MIT. Lihat file [LICENSE](https://github.com/shemilael/photo-timestamp-location-app/blob/main/LICENSE)
