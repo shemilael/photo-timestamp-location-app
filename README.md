@@ -19,7 +19,7 @@ photo-timestamp-location-app
 
 1. **Klon repositori**:
    ```
-   git clone <repository-url>
+   git clone https://github.com/shemilael/photo-timestamp-location-app
    ```
 
 2. **Masuk ke direktori proyek**:
