@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Timestamp & Lokasi ke Foto</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Tambah Timestamp & Lokasi ke Foto</h1>
+    <input type="file" id="upload" accept="image/*" class="upload-input"><br>
+    <canvas id="canvas" class="hidden"></canvas>
+    <img id="result" alt="Hasil Foto dengan Timestamp dan Lokasi" class="result-image">
+    <br>
+    <a id="downloadBtn" download="foto_dengan_timestamp_lokasi.jpg" class="download-btn hidden">⬇️ Download Hasil</a>
+  </div>
+
+  <script src="scripts/app.js"></script>
+  <footer class="footer">
+  <p>
+    Dibuat oleh <strong>Muntaqim Asbuch, S.Kom.</strong><br>
+    <a href="https://instagram.com/shemilael" target="_blank" title="Instagram">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="height:20px;vertical-align:middle;"> @shemilael
+    </a> |
+    <a href="https://facebook.com/shemilael" target="_blank" title="Facebook">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="height:20px;vertical-align:middle;"> @shemilael
+    </a> |
+    <a href="https://linkedin.com/in/shemilael" target="_blank" title="Linkedin">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="Linkedin" style="height:20px;vertical-align:middle;"> @shemilael
+    </a> |
+    <a href="https://twitter.com/shemilael" target="_blank" title="Twitter">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style="height:20px;vertical-align:middle;"> @shemilael
+    </a>
+    <a href="https://github.com/shemilael" target="_blank" title="GitHub">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" style="height:20px;vertical-align:middle;"> @shemilael
+    </a>
+  </p>
+</footer>
+</body>
+</html>
