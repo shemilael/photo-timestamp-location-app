@@ -3,41 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tambah Timestamp & Lokasi ke Foto</title>
+  <title>Aplikasi Timestamp & Geotagging</title>
+    <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles/main.css">
   <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Lora|Open+Sans&display=swap" rel="stylesheet">
 </head>
-<body>
-<div class="container">
-  <h1>Tambah Timestamp & Lokasi ke Foto</h1>
-  <input type="file" id="upload" accept="image/*" class="upload-input"><br>
-  <div id="info" class="info"></div> <!-- Tambahkan ini -->
-  <canvas id="canvas" class="hidden"></canvas>
-  <img id="result" alt="Hasil Foto dengan Timestamp dan Lokasi" class="result-image">
-  <br>
-  <a id="downloadBtn" download="foto_dengan_timestamp_lokasi.jpg" class="download-btn hidden">⬇️ Download Hasil</a>
-</div>
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex flex-col">
+  <div class="flex-grow flex items-center justify-center px-4">
+    <div class="container max-w-md w-full bg-white rounded-xl shadow-lg p-6 mt-8 mb-8 flex flex-col items-center gap-4">
+      <h1 class="text-2xl md:text-3xl font-bold text-blue-700 mb-2 text-center drop-shadow">Aplikasi Backup Timestamp & Geotagging</h1>
+      <strong>Aktualisasi Latsar CPNS Kementerian PU 2025</strong><br>
 
+      
+
+
+      <!-- Input file tetap di bawah panel -->
+      <input 
+        type="file" 
+        id="upload" 
+        accept="image/*" 
+        class="upload-input block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200"
+      >
+      <div id="info" class="info text-gray-600 text-sm w-full text-center"></div>
+      <canvas id="canvas" class="hidden"></canvas>
+      <img 
+        id="result" 
+        alt="Hasil Foto dengan Timestamp dan Lokasi" 
+        class="result-image max-w-full rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+      >
+      <a 
+        id="downloadBtn" 
+        download="foto_dengan_timestamp_lokasi.jpg" 
+        class="download-btn hidden mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition-all duration-200 text-lg font-semibold"
+      >⬇️ Download Hasil</a>
+    </div>
+  </div>
+  <footer class="footer bg-white bg-opacity-80 py-4 text-center text-gray-600 text-sm shadow-inner">
+    <p>
+      Dibuat oleh <strong>Muntaqim Asbuch, S.Kom.</strong><br>
+      <strong>Direktorat Jenderal Sumber Daya Air</strong><br>
+      <strong>Balai Wilayah Sungai Sumatera VI</strong><br>
+      <a href="https://instagram.com/shemilael" target="_blank" title="Instagram" class="inline-block mx-1 hover:scale-110 transition-transform">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" class="h-5 inline align-middle"> @shemilael
+      </a> |
+      <a href="https://facebook.com/shemilael" target="_blank" title="Facebook" class="inline-block mx-1 hover:scale-110 transition-transform">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" class="h-5 inline align-middle"> @shemilael
+      </a> |
+      <a href="https://linkedin.com/in/shemilael" target="_blank" title="Linkedin" class="inline-block mx-1 hover:scale-110 transition-transform">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="Linkedin" class="h-5 inline align-middle"> @shemilael
+      </a> |
+      <a href="https://twitter.com/shemilael" target="_blank" title="Twitter" class="inline-block mx-1 hover:scale-110 transition-transform">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" class="h-5 inline align-middle"> @shemilael
+      </a>
+      <a href="https://github.com/shemilael" target="_blank" title="GitHub" class="inline-block mx-1 hover:scale-110 transition-transform">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" class="h-5 inline align-middle"> @shemilael
+      </a>
+    </p>
+  </footer>
   <script src="scripts/app.js"></script>
-  <footer class="footer">
-  <p>
-    Dibuat oleh <strong>Muntaqim Asbuch, S.Kom.</strong><br>
-    <a href="https://instagram.com/shemilael" target="_blank" title="Instagram">
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="height:20px;vertical-align:middle;"> @shemilael
-    </a> |
-    <a href="https://facebook.com/shemilael" target="_blank" title="Facebook">
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="height:20px;vertical-align:middle;"> @shemilael
-    </a> |
-    <a href="https://linkedin.com/in/shemilael" target="_blank" title="Linkedin">
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="Linkedin" style="height:20px;vertical-align:middle;"> @shemilael
-    </a> |
-    <a href="https://twitter.com/shemilael" target="_blank" title="Twitter">
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style="height:20px;vertical-align:middle;"> @shemilael
-    </a>
-    <a href="https://github.com/shemilael" target="_blank" title="GitHub">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" style="height:20px;vertical-align:middle;"> @shemilael
-    </a>
-  </p>
-</footer>
 </body>
 </html>

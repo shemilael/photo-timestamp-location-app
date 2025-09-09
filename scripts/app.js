@@ -85,3 +85,65 @@ upload.addEventListener('change', async function () {
   };
   reader.readAsDataURL(file);
 });
+
+/**
+ * Membagi teks menjadi beberapa baris agar tidak melebihi maxWidth
+ */
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const words = text.split(' ');
+  let line = '';
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + ' ';
+    const metrics = ctx.measureText(testLine);
+    const testWidth = metrics.width;
+    if (testWidth > maxWidth && n > 0) {
+      ctx.fillText(line, x, y);
+      line = words[n] + ' ';
+      y += lineHeight;
+    } else {
+      line = testLine;
+    }
+  }
+  ctx.fillText(line, x, y);
+}
+
+/**
+ * Contoh penggunaan saat menggambar overlay di canvas
+ */
+function drawOverlayText(ctx, text, position, fontSize, fontFamily, fontColor, canvasWidth, canvasHeight) {
+  ctx.font = `${fontSize}px ${fontFamily}`;
+  ctx.fillStyle = fontColor;
+  ctx.textBaseline = 'top';
+
+  // Padding dari tepi gambar
+  const padding = 16;
+  const maxWidth = canvasWidth - 2 * padding;
+  const lineHeight = fontSize * 1.3;
+
+  // Tentukan posisi X dan Y awal sesuai pilihan user
+  let x = padding, y = padding;
+  if (position.includes('bottom')) y = canvasHeight - padding - lineHeight; // akan disesuaikan di bawah
+  if (position.includes('center')) x = canvasWidth / 2;
+}
+
+/**
+ * Ketika menggambar teks di canvas, gunakan pengaturan ini:
+ */
+function getTextSettings() {
+  const position = document.getElementById('textPosition').value;
+  const showTimestamp = document.getElementById('showTimestamp').value === 'yes';
+  const timestampFormat = document.getElementById('timestampFormat').value;
+  let fontFamily = document.getElementById('fontFamily').value;
+  if (fontFamily === 'custom') fontFamily = document.getElementById('customFont').value || 'Arial';
+  const fontSize = parseInt(document.getElementById('fontSize').value, 10) || 22;
+  let fontColor = document.getElementById('fontColor').value;
+  if (fontColor === 'custom') fontColor = document.getElementById('customColor').value || '#000000';
+  return { position, showTimestamp, timestampFormat, fontFamily, fontSize, fontColor };
+}
+
+document.getElementById('fontFamily').addEventListener('change', function() {
+  document.getElementById('customFont').classList.toggle('hidden', this.value !== 'custom');
+});
+document.getElementById('fontColor').addEventListener('change', function() {
+  document.getElementById('customColor').classList.toggle('hidden', this.value !== 'custom');
+});
